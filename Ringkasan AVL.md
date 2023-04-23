@@ -555,3 +555,11 @@ else {
 ```
 		n->right = deleteNode(n->right, temp->key);
 ```
+		Step 2.3.3 : check lagi aja
+```
+	if (n == NULL) {
+        return n;
+    }
+```
+		Step 2.3.4 : update height
+		Step 2.3.5 : rebalance
