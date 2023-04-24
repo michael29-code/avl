@@ -245,7 +245,10 @@ int main() {
     
 	printf("Tree After Delete (%d): ",keytodelete);
    
-    deleteNode(root,keytodelete);
+    root = deleteNode(root,keytodelete);
+    root = deleteNode(root,20);
+    root = deleteNode(root,30);
+//    deleteNode(root,keytodelete);
     inorder(root);
     printf("\n");
     
