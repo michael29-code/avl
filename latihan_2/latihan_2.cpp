@@ -119,8 +119,10 @@ node * insert(node *n,int key)
 
 node * deleteNode(node *n, int key)
 {
-
-
+	if(n == NULL)
+	{
+		return n;
+	}
 	
 	if(key < n->key)
 	{
@@ -199,6 +201,30 @@ void inorder(node *n)
 	}
 }
 
+
+node *deleteAll(node *n)
+{
+	while(n)
+	{
+		n = deleteNode(n,n->key);
+	}
+	return n;
+}
+
+node * searchValue(node *n, int key)
+{
+	if(n == NULL || key == n->key)
+	{
+		return n;
+	}else if(key < n->key)
+	{
+		return searchValue(n->left,key);
+	}else if(key > n->key)
+	{
+		return searchValue(n->right,key);
+	}
+}
+
 int main()
 {
 	node * root = NULL;
@@ -215,7 +241,11 @@ int main()
 	
 	root = deleteNode(root,10);
 //	root = deleteNode(root,20);
-	root = deleteNode(root,30);
+//	root = deleteNode(root,30);
 	
+//	root = deleteAll(root);
 	inorder(root);
+	printf("\n");
+	node *result = searchValue(root,30);
+	printf("%d", result->key);
 }

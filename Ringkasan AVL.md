@@ -1,4 +1,5 @@
 
+
 ```
 #include <stdio.h>
 #include <stdlib.h>
@@ -54,7 +55,10 @@ funciton new_node, default height 1 sisanya null return n
 
 ---
 ---
-
+- asda
+- asdad
+	- 
+- asdasd
 
 Right Rotate
 
@@ -562,4 +566,69 @@ else {
     }
 ```
 		Step 2.3.4 : update height
+```
+	n->height = 1 + max(height(n->left), height(n->right));
+```
 		Step 2.3.5 : rebalance
+```
+    int balance = get_balance(n);
+
+    if (balance > 1 && get_balance(n->left) >= 0) {
+        return rotate_right(n);
+    }
+
+    if (balance > 1 && get_balance(n->left) < 0) {
+        n->left = rotate_left(n->left);
+        return rotate_right(n);
+    }
+
+    if (balance < -1 && get_balance(n->right) <= 0) {
+        return rotate_left(n);
+    }
+
+    if (balance < -1 && get_balance(n->right) > 0) {
+        n->right = rotate_right(n->right);
+        return rotate_left(n);
+    }
+```
+
+		Step 2.3.6 : return
+```
+	return n;
+```
+
+----
+---
+Delete All : saat dia nda null, jalainin deleteNode
+```
+node *deleteAll(node *n)
+{
+	while(n)
+	{
+		n = deleteNode(n,n->key);
+	}
+	return n;
+}
+```
+
+----
+---
+Search Value : cari
+
+```
+node * searchValue(node *n, int key)
+{
+	if(n == NULL || key == n->key)
+	{
+		return n;
+	}else if(key < n->key)
+	{
+		return searchValue(n->left,key);
+	}else if(key > n->key)
+	{
+		return searchValue(n->right,key);
+	}
+}
+
+```
+
